@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+}
+body{
+width: 800px;
+ margin:100px auto  0 auto;
+}
+p{  
+     height: 200px;
+     width: 400px;
+}
+.vertical-photo img{
+   height: 200px;
+}
+.horizontal-photo{
+float: right;
+margin-left: 50px;
+}
+.site{
+    display: flex;
+
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Football Boots Catalog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Football Boots Catalog</h1>
+    <div id="catalog"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "data.xml");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            var xml = xhr.responseXML;
+            var products = xml.getElementsByTagName("Product");
+            for (var i = 0; i < products.length; i++) {
+              var product = products[i];
+              var id = product.getAttribute("id");
+              var brand = product.getAttribute("brand");
+              var category = product.getAttribute("category");
+              var name = product.getElementsByTagName("Name")[0].textContent;
+              var sku = product.getElementsByTagName("SKU")[0].textContent;
+              var price = product.getElementsByTagName("Price")[0].textContent;
+              var currency =
+                product.getElementsByTagName("Currency")[0].textContent;
+
+              var productHTML = '<div class="product">';
+              productHTML += "<h3>Product ID: " + id + "</h3>";
+              productHTML += "<p>Brand: " + brand + "</p>";
+              productHTML += "<p>Category: " + category + "</p>";
+              productHTML += "<p>Name: " + name + "</p>";
+              productHTML += "<p>SKU: " + sku + "</p>";
+              productHTML += "<p>Price: " + price + " " + currency + "</p>";
+              productHTML += "</div>";
+
+              document.getElementById("catalog").innerHTML += productHTML;
+            }
+          } else {
+            console.log("Error loading XML file");
+          }
+        };
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>

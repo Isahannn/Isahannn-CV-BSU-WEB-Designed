@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
+  <Product id="p1" brand="BrandA" category="Electronics">
+    <Name>Smartphone</Name>
+    <SKU>A123</SKU>
+    <Price>599.99</Price>
+    <Currency>USD</Currency>
+    <ref>Ref001</ref>
+  </Product>
+  <Product id="p2" brand="BrandB" category="HomeAppliances">
+    <Name>Blender</Name>
+    <SKU>B456</SKU>
+    <Price>89.99</Price>
+    <Currency>EUR</Currency>
+  </Product>
+  <Product id="p3" category="Audio">
+    <Name>Headphones</Name>
+    <SKU>C789</SKU>
+    <Price>129.99</Price>
+    <Currency>GBP</Currency>
+    <ref>Ref002</ref>
+  </Product>
+  <Product id="p4" brand="BrandC" category="Furniture">
+    <Name>Office Chair</Name>
+    <SKU>D012</SKU>
+    <Price>199.99</Price>
+    <Currency>USD</Currency>
+  </Product>
+  <Product id="p5" brand="BrandD" category="Kitchenware">
+    <Name>Toaster</Name>
+    <SKU>E345</SKU>
+    <Price>49.99</Price>
+    <Currency>EUR</Currency>
+    <ref>Ref003</ref>
+  </Product>
+  <Product id="p6" brand="BrandE">
+    <Name>Laptop</Name>
+    <SKU>F678</SKU>
+    <Price>899.99</Price>
+    <Currency>GBP</Currency>
+  </Product>
+  <Product id="p7" brand="BrandF" category="Gadgets">
+    <Name>Smartwatch</Name>
+    <SKU>G901</SKU>
+    <Price>199.99</Price>
+    <Currency>USD</Currency>
+  </Product>
+  <Product id="p8" category="Sports">
+    <Name>Fitness Tracker</Name>
+    <SKU>H234</SKU>
+    <Price>79.99</Price>
+    <Currency>EUR</Currency>
+    <ref>Ref004</ref>
+  </Product>
+  <Product id="p9" brand="BrandG" category="Toys">
+    <Name>Action Figure</Name>
+    <SKU>I567</SKU>
+    <Price>24.99</Price>
+    <Currency>GBP</Currency>
+  </Product>
+  <Product id="p10" brand="BrandH" category="Books">
+    <Name>Cookbook</Name>
+    <SKU>J890</SKU>
+    <Price>19.99</Price>
+    <Currency>USD</Currency>
+    <ref>Ref005</ref>
+  </Product>
+</Catalog>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="SKUType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PriceType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CurrencyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="GBP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:group name="ProductDetailsGroup">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="SKU" type="SKUType"/>
+      <xs:element name="Price" type="PriceType"/>
+      <xs:element name="Currency" type="CurrencyType"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="ProductType">
+    <xs:sequence>
+      <xs:group ref="ProductDetailsGroup"/>
+      <xs:element name="ref" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="brand" type="xs:string" use="optional" default="DefaultBrand"/>
+    <xs:attribute name="category" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:element name="Catalog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Product" type="ProductType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

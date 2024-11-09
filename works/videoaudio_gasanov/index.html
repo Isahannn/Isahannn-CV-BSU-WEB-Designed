@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Video</title>
+    <style type="text/css">
+        body {
+            background-color: #ececec;
+            font-family: Arial;
+        }
+
+        div#video_div {
+            background-color: #c0c0c0;
+            width: 500px;
+            margin: 0 auto;
+            padding: 25px;
+        }
+
+        video {
+            background-color: #000000;
+            width: 100%;
+        }
+
+        div.buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        div.buttons img,
+        div.buttons div {
+            display: inline-block;
+        }
+
+        span.volume_span {
+            width: 100px;
+        }
+
+        span.volume_stop {
+            width: 50px;
+            height: 50px;
+            display: inline;
+        }
+
+        img.full_span {
+            width: 30px;
+            height: 30px;
+        }
+
+        div.buttons div.buttons_play {
+            display: flex;
+            align-items: center;
+        }
+
+        #timer {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .rangeTime {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 15px;
+            border-radius: 5px;
+            background: #f6f6f6;
+            outline: none;
+            opacity: 0.7;
+            margin: 0 10px;
+        }
+
+        #slower,
+        #faster {
+            height: 25px;
+            width: 100px;
+            border-radius: 20px;
+            border: 0;
+            background: #535ef5;
+            margin: 0 10px;
+        }
+
+        .rangeTime::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #000033;
+            cursor: pointer;
+        }
+
+        .rangeVolume {
+            width: 100px;
+            -webkit-appearance: none;
+            height: 10px;
+            border-radius: 5px;
+            background: #ffffff;
+            outline: none;
+            opacity: 0.7;
+            margin: 10px 10px;
+        }
+
+        .rangeVolume::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #000033;
+            cursor: pointer;
+        }
+
+        button {
+            margin: 10px;
+            background-color: #9999FF;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: white;
+            cursor: pointer;
+        }
+
+        div.buttons p#timer {
+            margin: 10px 0;
+        }
+
+        div.buttons .rangeTime {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .playbackRate span {
+            font-weight: bold;
+            margin: 10px 10px;
+        }
+
+        div.playbackRate {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+<div id="video_div">
+    <video id="video" src="/video/Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" width="500" height="400" preload="metadata" controls poster="/video/scale_1200.jpg"></video>
+    <div class="buttons">
+        <div>
+            <img src="icons8-voice-50.png" class="volume_stop" id="volume_stop" width="30px">
+            <input class="volume_set rangeVolume" type="range" step="0.1" min="0" max="1" value="0.5" id="volume"/>
+        </div>
+        <div class="buttons_play">
+            <div class="but">
+                <img src="icons8-rewind-50.png" class="back_span" id="back">
+                <img src="icons8-play-50.png" class="play_span" id="play">
+                <img src="icons8-fast-forward-50.png" class="next_span" id="next">
+            </div>
+            <img src="icons8-expand-48.png" class="full_span" id="full">
+        </div>
+    </div>
+    <div class="buttons">
+        <p id="timer">00:00</p>
+        <input type="range" class="rangeTime" id="progress" min="0" max="100" value="0">
+        <p id="duration">00:00</p>
+    </div>
+    <div class="buttons playbackRate">
+        <span>Speed:</span>
+        <button id="slower">Slower</button>
+        <button id="faster">Faster</button>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const playButton = document.getElementById('play');
+    const volumeButton = document.getElementById('volume_stop');
+    const volumeSlider = document.getElementById('volume');
+    const backButton = document.getElementById('back');
+    const nextButton = document.getElementById('next');
+    const fullButton = document.getElementById('full');
+    const progressSlider = document.getElementById('progress');
+    const timer = document.getElementById('timer');
+    const duration = document.getElementById('duration');
+    const slowerButton = document.getElementById('slower');
+    const fasterButton = document.getElementById('faster');
+    const restartButton = document.getElementById('restart');
+
+
+    playButton.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            playButton.src = 'icons8-pause-50.png';
+        } else {
+            video.pause();
+            playButton.src = 'icons8-play-50.png';
+            video.currentTime = 0;
+        }
+    });
+    
+
+    volumeSlider.addEventListener('input', () => {
+        video.volume = volumeSlider.value;
+    });
+
+  
+    backButton.addEventListener('click', () => {
+        video.currentTime -= 10;
+    });
+
+
+    nextButton.addEventListener('click', () => {
+        video.currentTime += 10;
+    });
+
+
+    fullButton.addEventListener('click', () => {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    });
+
+
+    video.addEventListener('timeupdate', () => {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressSlider.value = progress;
+        const minutes = Math.floor(video.currentTime / 60);
+        const seconds = Math.floor(video.currentTime % 60);
+        timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    });
+
+
+    video.addEventListener('loadedmetadata', () => {
+        const minutes = Math.floor(video.duration / 60);
+        const seconds = Math.floor(video.duration % 60);
+        duration.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    });
+
+
+    progressSlider.addEventListener('input', () => {
+        const seekTime = (progressSlider.value / 100) * video.duration;
+        video.currentTime = seekTime;
+    });
+
+  
+    slowerButton.addEventListener('click', () => {
+        video.playbackRate -= 0.1;
+    });
+
+    fasterButton.addEventListener('click', () => {
+        video.playbackRate += 0.1;
+    });
+</script>
+</body>
+</html>

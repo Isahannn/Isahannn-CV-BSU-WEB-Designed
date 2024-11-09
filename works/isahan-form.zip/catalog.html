@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Заказ товара</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <h1>Заказ товара</h1>
+        <label>
+            Название:
+            <input type="text" pattern="\d{3}-[A-Z]{3}-[a-z]{3}\{\d{2}\}[a-z]{2}" placeholder="Введите ID-товара" required>
+        </label>
+        <label>
+            Имя:
+            <input type="text" autocomplete="off" placeholder="Введите ваше имя">
+        </label>
+        <label> 
+            E-mail:
+            <input type="email" placeholder="Введите ваш email" required>
+        </label>
+        <label>
+            Цвет:
+            <input type="color" class="color-picker" required>
+        </label>
+        <label>
+            Количество:
+            <input type="number" min="1" placeholder="Введите количество" required>
+        </label>
+        <label>
+            Дата/время:
+            <input type="text" id="date" name="date" placeholder="ДД.ММ.ГГ" pattern="\d{2}\.\d{2}\.\d{2}" required>
+        </label>
+        <fieldset>
+            <legend>Способ доставки:</legend>
+            <div class="delivery-options">
+                <label>
+                    <input type="radio" name="delivery" value="Самовывоз" required>
+                    Самовывоз
+                </label>
+                <label>
+                    <input type="radio" name="delivery" value="Курьером" required>
+                    Курьером
+                </label>
+            </div>
+        </fieldset>
+        <label>
+            Ближайший пункт самовывоза:
+            <select required>
+                <option value="">Выберите пункт самовывоза</option>
+                <option value="Пункт 1">Пункт 1</option>
+                <option value="Пункт 2">Пункт 2</option>
+                <option value="Пункт 3">Пункт 3</option>
+                <option value="Пункт 5">Пункт 5</option>
+            </select>
+        </label>
+        <h3>Упаковка</h3>
+        <fieldset>
+            <div class="packaging-options">
+                <label class="packaging-label">
+                    <img src="images/OIG3.bt64eJgEo.jpg" alt="Упаковка 1" class="packaging-image">
+                    <input type="radio" name="packaging" value="Упаковка 1" required>
+                </label>
+                <label class="packaging-label">
+                    <img src="images/OIG3.jpg" alt="Упаковка 2" class="packaging-image">
+                    <input type="radio" name="packaging" value="Упаковка 2" required>
+                </label>
+                <label class="packaging-label">
+                    <img src="images/OIG3.bt64eJgEo.jpg" alt="Упаковка 3" class="packaging-image">
+                    <input type="radio" name="packaging" value="Упаковка 3" required>
+                </label>
+            </div>
+        </fieldset>
+        <input type="submit" value="Отправить">
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

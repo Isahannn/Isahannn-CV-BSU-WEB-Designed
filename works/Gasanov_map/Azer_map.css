@@ -1,0 +1,142 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fx2 {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.fx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  animation: fx2 0.2s ease-in-out;
+}
+
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  filter: blur(5px);
+}
+
+
+.content {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Список элементов */
+#spisok {
+  display: flex;
+  gap: 10px;
+}
+
+/* Ссылки */
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* Контейнер для текста */
+#text-container {
+  width: 80%;
+  max-width: 1200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 4rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2 {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+#hover-text {
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  transition: opacity 0.8s ease;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#text-container:hover #hover-text {
+  opacity: 0.7;
+}
+
+body {
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+img {
+  margin-top: 10%;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+h3 {
+  color: black;
+  font-size: 4rem;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+h4 {
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+li {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
